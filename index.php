@@ -1,4 +1,5 @@
 <?php
+
 header('Access-Control-Allow-Origin: *');
 header('Content-type: application/json');
 
@@ -22,7 +23,7 @@ $method = $_SERVER['REQUEST_METHOD'];
 
 require_once 'db.class.php';
 
-if($base == 'usuarios'){
+if(isset($base) && $base == 'usuarios'){
     if($method == "GET"){
         $db = Database::conectar();
 
@@ -36,7 +37,7 @@ if($base == 'usuarios'){
     }
 }
 
-if($add == 'adicionar'){
+if(isset($add) && $add == 'adicionar'){
     if($method === 'POST'){
         $dados = json_decode(file_get_contents('php://input'), true);
         
